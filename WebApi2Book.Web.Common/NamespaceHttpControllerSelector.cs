@@ -37,7 +37,7 @@ namespace WebApi2Book.Web.Common
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            var controllerKey = String.Format(CultureInfo.InvariantCulture, "{0}.{ 1}", namespaceName, controllerName);
+            var controllerKey = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", namespaceName, controllerName);
             HttpControllerDescriptor controllerDescriptor;
             if (_controllers.Value.TryGetValue(controllerKey, out controllerDescriptor))
             {
@@ -59,7 +59,7 @@ namespace WebApi2Book.Web.Common
             {
                 var segments = controllerType.Namespace.Split(Type.Delimiter);
                 var controllerName = controllerType.Name.Remove(controllerType.Name.Length - DefaultHttpControllerSelector.ControllerSuffix.Length);
-                var controllerKey = String.Format(CultureInfo.InvariantCulture, "{0}.{ 1}", segments[segments.Length - 1], controllerName);
+                var controllerKey = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", segments[segments.Length - 1], controllerName);
                 if (!dictionary.Keys.Contains(controllerKey))
                 {
                     dictionary[controllerKey] = new HttpControllerDescriptor(_configuration, controllerType.Name, controllerType);

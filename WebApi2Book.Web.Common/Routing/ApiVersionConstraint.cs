@@ -8,7 +8,7 @@ using System.Web.Http.Routing;
 
 namespace WebApi2Book.Web.Common.Routing
 {
-    public class ApiVersionConstraint
+    public class ApiVersionConstraint :IHttpRouteConstraint
     {
         public ApiVersionConstraint(string allowedVersion)
         {

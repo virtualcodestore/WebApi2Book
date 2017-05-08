@@ -39,10 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IVersionedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs" />
-    <Compile Include="Task.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Entities\Status.cs" />
+    <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

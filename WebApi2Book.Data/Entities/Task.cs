@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApi2Book.Data
+namespace WebApi2Book.Data.Entities
 {
-    public class Task
+    public class Task : IVersionedEntity
     {
         private readonly IList<User> _users = new List<User>();
         public virtual long TaskId { get; set; }

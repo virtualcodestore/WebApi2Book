@@ -5,14 +5,14 @@
 
 if not exists (select * from [User] where Username = 'bhogg') 
 
-INSERT into [dbo].[ User] ([ Firstname], [Lastname], [Username]) 
+INSERT into [dbo].[User] ([Firstname], [Lastname], [Username]) 
 VALUES (N'Boss', N'Hogg', N'bhogg') 
 
 if not exists (select * from [User] where Username = 'jbob') 
-INSERT into [dbo].[ User] ([ Firstname], [Lastname], [Username]) VALUES (N'Jim', N'Bob', N'jbob') 
+INSERT into [dbo].[User] ([Firstname], [Lastname], [Username]) VALUES (N'Jim', N'Bob', N'jbob') 
 
 if not exists (select * from [User] where Username = 'jdoe') 
-INSERT into [dbo].[ User] ([ Firstname], [Lastname], [Username]) VALUES (N'John', N'Doe', N'jdoe') 
+INSERT into [dbo].[User] ([Firstname], [Lastname], [Username]) VALUES (N'John', N'Doe', N'jdoe') 
 
 if not exists( select * from dbo.Task where Subject = 'Test Task') 
 begin 

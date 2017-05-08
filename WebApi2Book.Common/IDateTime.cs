@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApi2Book.Data.SqlServer
+namespace WebApi2Book.Common
 {
-    public class Class1
+    public interface IDateTime
     {
+        DateTime UtcNow { get; }
     }
 }
