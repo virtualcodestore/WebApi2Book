@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+//using System.Threading.Tasks;
+using WebApi2Book.Web.Api.Models;
+
+namespace WebApi2Book.Web.Api.MaintenanceProcessing
+{
+    public interface IAddTaskMaintenanceProcessor
+    {
+        Task AddTask(NewTask newTask);
+    }
+}

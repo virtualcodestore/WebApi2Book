@@ -8,7 +8,7 @@ namespace WebApi2Book.Web.Api.Models
 {
     public class Task
     {
-        private List < Link > _links; 
+        private List <Link> _links; 
         public long? TaskId { get; set; } 
         public string Subject { get; set; } 
         public DateTime? StartDate { get; set; }

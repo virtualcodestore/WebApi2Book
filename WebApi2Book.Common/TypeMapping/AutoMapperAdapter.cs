@@ -11,7 +11,7 @@ namespace WebApi2Book.Common.TypeMapping
     {
         public T Map <T>( object objectToMap) 
         { 
-            return Mapper.Map < T >( objectToMap); 
+            return Mapper.Map <T>( objectToMap); 
         }
 
 

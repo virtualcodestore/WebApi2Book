@@ -15,9 +15,11 @@ using Ninject.Web.Common;
 using WebApi2Book.Data.SqlServer.Mapping;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Common.Security; 
-//using WebApi2Book.Web.Common.Security;
-using WebApi2Book.Data.QueryProcessors; 
-//using WebApi2Book.Data.SqlServer.QueryProcessors;
+
+using WebApi2Book.Data.QueryProcessors;
+using WebApi2Book.Web.Api.MaintenanceProcessing;
+using WebApi2Book.Common.TypeMapping;
+using WebApi2Book.Web.Api.AutoMappingConfiguration;
 
 
 
@@ -73,20 +75,19 @@ namespace WebApi2Book.Web.Api
         { 
             ConfigureLog4net(container); 
             ConfigureNHibernate(container); 
-            ConfigureUserSession( container);
+            ConfigureUserSession(container);
+            ConfigureAutoMapper(container);
             container.Bind<IDateTime>()
                 .To<DateTimeAdapter>()
                 .InSingletonScope(); 
-            container.Bind <IAddTaskQueryProcessor>(). To <AddTaskQueryProcessor>(). InRequestScope();
+            container.Bind <IAddTaskQueryProcessor>()
+                        .To <AddTaskQueryProcessor>()
+                        .InRequestScope();
 
  
         }
 
-        //private void AddBindings(IKernel container)
-        //{
-        //    ConfigureLog4net(container);
-        //    container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
-        //}
+
        private void ConfigureUserSession( IKernel container) 
        { 
            var userSession = new UserSession(); 
@@ -95,7 +96,35 @@ namespace WebApi2Book.Web.Api
                .InSingletonScope(); 
            container.Bind <IWebUserSession >()
                .ToConstant( userSession)
-               .InSingletonScope(); }
+               .InSingletonScope(); 
+       }
+        private void ConfigureAutoMapper(IKernel container) 
+        { 
+            container.Bind<IAutoMapper>().To <AutoMapperAdapter>().InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusEntityToStatusAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusToStatusEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserEntityToUserAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserToUserEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<NewTaskToTaskEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<TaskEntityToTaskAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAddTaskMaintenanceProcessor>()
+                .To<AddTaskMaintenanceProcessor>()
+                .InSingletonScope();
+        }
+
+
 
 
 
